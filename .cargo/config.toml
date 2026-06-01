@@ -1,0 +1,4 @@
+# Force frame pointers on the Rust frames too, so the whole chain
+# (capture -> nofp_fn -> dwarf_fn -> main) maintains x29 as a frame pointer.
+[build]
+rustflags = ["-C", "force-frame-pointers=yes"]

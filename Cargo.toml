@@ -1,0 +1,17 @@
+[package]
+name = "framehop-reanchor-repro"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+# Two revisions of the SAME framehop repo, renamed so both can coexist in the graph:
+#   - fixed: HEAD of the SP re-anchor branch (commit cc3f786, has the re-anchor)
+#   - nofix: the commit just before it (3a47fc0, no re-anchor -> reproduces the bug)
+framehop_fixed = { package = "framehop", git = "https://github.com/CodSpeedHQ/framehop.git", rev = "cc3f786" }
+framehop_nofix = { package = "framehop", git = "https://github.com/CodSpeedHQ/framehop.git", rev = "3a47fc0" }
+object = "0.39"
+rustc-demangle = "0.1"
+
+[profile.dev]
+debug = true
